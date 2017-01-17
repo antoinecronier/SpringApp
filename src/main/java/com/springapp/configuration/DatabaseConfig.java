@@ -1,4 +1,4 @@
-package com.springapp;
+package com.springapp.configuration;
 
 import java.util.Properties;
 import javax.sql.DataSource;

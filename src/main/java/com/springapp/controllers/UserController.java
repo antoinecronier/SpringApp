@@ -5,8 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.springapp.dao.UserDao;
+import com.springapp.dao.interfaces.IUserDao;
 import com.springapp.models.User;
-import com.springapp.models.UserDao;
 
 @Controller
 public class UserController {
@@ -84,6 +85,6 @@ public class UserController {
 
   // Wire the UserDao used inside this controller.
   @Autowired
-  private UserDao userDao;
+  private IUserDao userDao;
 
 }
