@@ -5,9 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import com.springapp.dao.interfaces.ITeacherDao;
+import com.springapp.manager.interfaces.ITeacherManager;
 import com.springapp.models.Teacher;
 import com.springapp.utils.DumpFields;
 
@@ -25,13 +24,13 @@ public class TeacherViewController {
 		Teacher teacher = new Teacher(firstname, lastname, login, password,
 				socity);
 		System.out.println(teacher);
-		teacherDao.create(teacher);
+		teacherManager.create(teacher);
 
 		String redirectUrl = "/";
 	    return "redirect:" + redirectUrl;
 	}
 
 	@Autowired
-	private ITeacherDao teacherDao;
+	private ITeacherManager teacherManager;
 
 }

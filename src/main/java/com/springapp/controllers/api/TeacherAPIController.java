@@ -5,10 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.springapp.dao.TeacherDao;
-import com.springapp.dao.interfaces.ITeacherDao;
+import com.springapp.manager.interfaces.ITeacherManager;
 import com.springapp.models.Teacher;
-import com.springapp.models.User;
 
 @Controller
 public class TeacherAPIController {
@@ -24,7 +22,7 @@ public class TeacherAPIController {
 		try {
 			Teacher teacher = new Teacher(firstname, lastname, login, password,
 					socity);
-			teacherDao.create(teacher);
+			teacherManager.create(teacher);
 		} catch (Exception ex) {
 			return "Error creating the user: " + ex.toString();
 		}
@@ -39,7 +37,7 @@ public class TeacherAPIController {
 	public String delete(Integer id) {
 		try {
 			Teacher teacher = new Teacher(id);
-			teacherDao.delete(teacher);
+			teacherManager.delete(teacher);
 		} catch (Exception ex) {
 			return "Error deleting the user: " + ex.toString();
 		}
@@ -54,23 +52,19 @@ public class TeacherAPIController {
 	public String updateName(Integer id, String firstname, String lastname, String login,
 			String password, String socity) {
 		try {
-			Teacher teacher = teacherDao.getById(id);
+			Teacher teacher = teacherManager.getById(id);
 			teacher.setFirstname(firstname);
 			teacher.setLastname(lastname);
 			teacher.setLogin(login);
 			teacher.setPassword(password);
 			teacher.setSocity(socity);
-			teacherDao.update(teacher);
+			teacherManager.update(teacher);
 		} catch (Exception ex) {
 			return "Error updating the user: " + ex.toString();
 		}
 		return "Teacher succesfully updated!";
 	}
 
-	// Private fields
-
-	// Wire the UserDao used inside this controller.
 	@Autowired
-	private ITeacherDao teacherDao;
-
+	private ITeacherManager teacherManager;
 }

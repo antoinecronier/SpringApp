@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Bean;
 
 import com.springapp.dao.TeacherDao;
 import com.springapp.dao.interfaces.ITeacherDao;
+import com.springapp.manager.TeacherManager;
+import com.springapp.manager.interfaces.ITeacherManager;
 
 @SpringBootApplication
 public class SpringAppApplication {
@@ -15,7 +17,12 @@ public class SpringAppApplication {
 	}
 
 	@Bean
-	public ITeacherDao getUserDao(){
+	public ITeacherDao getTeacherDao(){
 		return new TeacherDao();
+	}
+
+	@Bean
+	public ITeacherManager getTeacherManager(){
+		return new TeacherManager();
 	}
 }
