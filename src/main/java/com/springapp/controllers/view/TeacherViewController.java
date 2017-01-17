@@ -16,14 +16,19 @@ public class TeacherViewController {
 	@GetMapping("/teachers/create")
 	public String userCreate(Model model) {
 		model.addAttribute("attributs", DumpFields.<Teacher>inspect(Teacher.class));
-		return "teacherCreate";
+		return "teacher/teacherCreate";
 	}
 
 	@PostMapping("/teachers/create")
-	public String itemTestRetreiver(@RequestBody final String teacher){
+	public String itemTestRetreiver(String firstname, String lastname, String login,
+			String password, String socity){
+		Teacher teacher = new Teacher(firstname, lastname, login, password,
+				socity);
 		System.out.println(teacher);
-		teacherDao.create(new Teacher(teacher));
-		return "welcome";
+		teacherDao.create(teacher);
+
+		String redirectUrl = "/";
+	    return "redirect:" + redirectUrl;
 	}
 
 	@Autowired

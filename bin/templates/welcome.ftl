@@ -10,6 +10,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+    Date: ${time?date}
+    <br>
+    Time: ${time?time}
+    <br>
+    Message: ${message}
+
     <div class="container">
         <div class="col-lg-4">
             <div class="photo"><img src="https://media.licdn.com/media/AAEAAQAAAAAAAANbAAAAJDE5NjBkNDk1LTY3ZGQtNDA0NS04YTJiLTdkNmU3NjZiNjI3Mg.png"></div>
