@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.springapp.dao.UserDao;
-import com.springapp.dao.interfaces.IUserDao;
+import com.springapp.dao.TeacherDao;
+import com.springapp.dao.interfaces.ITeacherDao;
 
 @SpringBootApplication
 public class SpringAppApplication {
@@ -15,7 +15,7 @@ public class SpringAppApplication {
 	}
 
 	@Bean
-	public IUserDao getUserDao(){
-		return new UserDao();
+	public ITeacherDao getUserDao(){
+		return new TeacherDao();
 	}
 }

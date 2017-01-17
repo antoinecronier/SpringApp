@@ -1,84 +1,70 @@
 package com.springapp.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "users")
-public class User {
+import com.springapp.models.base.EntityBase;
 
-	// The entity fields (private)
+@MappedSuperclass
+@Inheritance
+public abstract class User extends EntityBase {
+	@Column(nullable = false)
+	private String firstname;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	@Column(nullable = false)
+	private String lastname;
 
-	@NotNull
-	private String email;
+	@Column(nullable = false)
+	private String login;
 
-	@NotNull
-	private String name;
+	@Column(nullable = false)
+	private String password;
 
-	// Public methods
-
-	public User() {
+	public String getFirstname() {
+		return firstname;
+	}
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+	public String getLastname() {
+		return lastname;
+	}
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public User(long id) {
-		this.id = id;
+	public User(){
+		super();
 	}
 
-	public User(String email, String name) {
-		this.email = email;
-		this.name = name;
+	public User(Integer id) {
+		super(id);
 	}
 
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
-
-	/**
-	 * @param id
-	 *            the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
-
-	/**
-	 * @param email
-	 *            the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * @param name
-	 *            the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
+	public User(String firstname, String lastname, String login, String password) {
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.login = login;
+		this.password = password;
 	}
 }
