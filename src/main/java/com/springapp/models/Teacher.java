@@ -28,14 +28,6 @@ public class Teacher extends User {
 		super(id);
 	}
 
-	public Teacher(String teacher) {
-		super.setFirstname(teacher.split("&")[0].split("=")[1]);
-		super.setLastname(teacher.split("&")[1].split("=")[1]);
-		super.setLogin(teacher.split("&")[2].split("=")[1]);
-		super.setPassword(teacher.split("&")[3].split("=")[1]);
-		this.setSocity(teacher.split("&")[4].split("=")[1]);
-	}
-
 	public Teacher(String firstname, String lastname, String login,
 			String password, String socity) {
 		super(firstname, lastname, login, password);

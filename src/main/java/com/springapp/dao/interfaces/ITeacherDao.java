@@ -1,7 +1,5 @@
 package com.springapp.dao.interfaces;
 
-import javax.transaction.Transactional;
-
 import org.springframework.stereotype.Repository;
 
 import com.springapp.dao.interfaces.base.IBaseDao;

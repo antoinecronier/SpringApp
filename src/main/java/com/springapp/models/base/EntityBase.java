@@ -7,6 +7,7 @@ import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public abstract class EntityBase {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
