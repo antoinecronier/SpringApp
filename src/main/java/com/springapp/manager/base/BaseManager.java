@@ -3,9 +3,11 @@ package com.springapp.manager.base;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.springapp.dao.interfaces.base.IBaseDao;
 
+@Service
 public abstract class BaseManager<T> {
 
 	public void create(T item) {

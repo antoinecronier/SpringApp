@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.springapp.manager.interfaces.ITeacherManager;
@@ -19,10 +20,9 @@ public class TeacherViewController {
 	}
 
 	@PostMapping("/teachers/create")
-	public String itemTestRetreiver(String firstname, String lastname, String login,
-			String password, String socity){
-		Teacher teacher = new Teacher(firstname, lastname, login, password,
-				socity);
+	public String itemTestRetreiver(@ModelAttribute Teacher teacher){
+		/*Teacher teacher = new Teacher(firstname, lastname, login, password,
+				socity);*/
 		System.out.println(teacher);
 		teacherManager.create(teacher);
 

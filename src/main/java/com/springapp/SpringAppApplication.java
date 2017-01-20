@@ -40,15 +40,15 @@ public class SpringAppApplication {
 		SpringApplication.run(SpringAppApplication.class, args);
 	}
 
-	@Bean
-	public ITeacherDao getTeacherDao(){
-		return new TeacherDao();
-	}
-
-	@Bean
-	public ITeacherManager getTeacherManager(){
-		return new TeacherManager();
-	}
+//	@Bean
+//	public ITeacherDao getTeacherDao(){
+//		return new TeacherDao();
+//	}
+//
+//	@Bean
+//	public ITeacherManager getTeacherManager(){
+//		return new TeacherManager();
+//	}
 
 	@Bean
 	public ITeacherFileDao getTeacherFileDao(){
