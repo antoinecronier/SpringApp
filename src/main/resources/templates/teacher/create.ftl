@@ -1,9 +1,9 @@
 <!-- freemarker macros have to be imported into a namespace. We strongly
 recommend sticking to spring -->
-<#import "/bootstrap.ftl" as spring />
+<#include "/bootstrap.ftl"/>
 <html>
 <body>
-    ...
+    <h1>${page}</h1>
     <form action="" method="POST">
         <#list attributs as attribut>
             <br>
@@ -17,6 +17,6 @@ recommend sticking to spring -->
             <input type="submit" value="submit"/>
         </br>
     </form>
-    ...
+    <a href="list">Back</a>
 </body>
 </html>

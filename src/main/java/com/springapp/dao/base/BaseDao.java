@@ -8,9 +8,18 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.springapp.dao.interfaces.base.IBaseDao;
+
 @Service
 @Transactional
-public abstract class BaseDao<T> {
+public abstract class BaseDao<T> implements IBaseDao<T> {
+
+	private Class<T> clazz;
+
+	public BaseDao(Class<T> clazz) {
+		this.clazz = clazz;
+	}
+
 	public void create(T item) {
 		entityManager.persist(item);
 		return;
@@ -25,8 +34,10 @@ public abstract class BaseDao<T> {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List getAll() {
-		return entityManager.createQuery("from TeacherFile").getResultList();
+	public List<T> getAll() {
+		return entityManager.createQuery(
+				"select e from " + clazz.getSimpleName() + " e")
+				.getResultList();
 	}
 
 	public void update(T item) {

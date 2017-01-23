@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springapp.dao.interfaces.base.IBaseDao;
+import com.springapp.manager.interfaces.base.IBaseManager;
 
 @Service
-public abstract class BaseManager<T> {
+public abstract class BaseManager<T> implements IBaseManager<T> {
 
 	public void create(T item) {
 		dao.create(item);

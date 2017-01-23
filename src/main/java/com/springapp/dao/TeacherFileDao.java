@@ -9,6 +9,10 @@ import com.springapp.models.TeacherFile;
 @Transactional
 public class TeacherFileDao extends BaseDao<TeacherFile> implements ITeacherFileDao {
 
+	public TeacherFileDao() {
+		super(TeacherFile.class);
+	}
+
 	@Override
 	public TeacherFile getById(Integer id) {
 		return super.entityManager.find(TeacherFile.class, id);

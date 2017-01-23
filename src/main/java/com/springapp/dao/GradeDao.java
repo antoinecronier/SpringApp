@@ -9,6 +9,10 @@ import com.springapp.models.Grade;
 @Transactional
 public class GradeDao extends BaseDao<Grade> implements IGradeDao {
 
+	public GradeDao() {
+		super(Grade.class);
+	}
+
 	@Override
 	public Grade getById(Integer id) {
 		return super.entityManager.find(Grade.class, id);
