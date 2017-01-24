@@ -1,6 +1,8 @@
 package com.springapp.controllers.view.base;
 
 import java.util.ArrayList;
+
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;

@@ -1,5 +1,6 @@
 package com.springapp.controllers.view;
 
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import com.springapp.utils.DumpFields;
 
 @Controller
 @RequestMapping("/teacher")
+@Secured({"ROLE_ADMIN"})
 public class TeacherViewController extends BaseViewController<Teacher> {
 
 	public TeacherViewController(){
