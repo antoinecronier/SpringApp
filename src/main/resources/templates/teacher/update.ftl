@@ -1,6 +1,8 @@
 <!-- freemarker macros have to be imported into a namespace. We strongly
 recommend sticking to spring -->
-<#include "/bootstrap.ftl"/>
+<head>
+<#include "../bootstrap.ftl"/>
+</head>
 <html>
 <body>
     <h1>${page}</h1>

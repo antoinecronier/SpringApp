@@ -1,4 +1,6 @@
+<head>
 <#include "../bootstrap.ftl"/>
+</head>
 <html>
 <body>
     <h1>${page}</h1>
