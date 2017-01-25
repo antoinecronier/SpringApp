@@ -3,6 +3,7 @@ package com.springapp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHttpSession;
 
 import com.springapp.dao.GradeDao;
 import com.springapp.dao.NamespaceDao;
@@ -34,21 +35,12 @@ import com.springapp.manager.interfaces.ITeacherFileManager;
 import com.springapp.manager.interfaces.ITeacherManager;
 
 @SpringBootApplication
+//@EnableJdbcHttpSession
 public class SpringAppApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringAppApplication.class, args);
 	}
-
-//	@Bean
-//	public ITeacherDao getTeacherDao(){
-//		return new TeacherDao();
-//	}
-//
-//	@Bean
-//	public ITeacherManager getTeacherManager(){
-//		return new TeacherManager();
-//	}
 
 	@Bean
 	public ITeacherFileDao getTeacherFileDao(){

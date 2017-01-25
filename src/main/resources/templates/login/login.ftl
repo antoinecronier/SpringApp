@@ -1,3 +1,4 @@
+<#import "/spring.ftl" as spring/>
 <html>
   <head>
     <title tiles:fragment="title">Messages : Create</title>
@@ -22,5 +23,5 @@
 </html>
 
 <#if Session.SPRING_SECURITY_LAST_EXCEPTION?? && Session.SPRING_SECURITY_LAST_EXCEPTION.message?has_content>
-    <@spring.message "login.bad.credentials"/>
+    <h1>Bad credential</h1>
 </#if>

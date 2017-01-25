@@ -1,27 +1,26 @@
 package com.springapp.configuration;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.servlet.configuration.EnableWebMvcSecurity;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Configuration
-@EnableWebMvcSecurity
+@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+	@Autowired
+	DataSource dataSource;
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.csrf().disable();
-
-		/*httpSecurity.anonymous().and().authorizeRequests().antMatchers("/**")
-				.permitAll().antMatchers("/**").authenticated();*/
-
-//		httpSecurity.authorizeRequests()
-//	    	.antMatchers("/", "/teacher/**", "/teacherfile/**").permitAll()
-//	    	.anyRequest().authenticated();
-		//.antMatchers("/teacher/**").access("hasRole('ROLE_ADMIN')")
+		httpSecurity.csrf().disable();//TODO check for delete
 
 		httpSecurity
 				.authorizeRequests()
@@ -30,6 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 				.formLogin()
 					.loginPage("/login")
+					.usernameParameter("username").passwordParameter("password")
 					.permitAll()
 			.and()
         		.httpBasic();
@@ -37,8 +37,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-	  auth.inMemoryAuthentication().withUser("mkyong").password("123456").roles("USER");
-	  auth.inMemoryAuthentication().withUser("admin").password("123456").roles("ADMIN");
-	  auth.inMemoryAuthentication().withUser("dba").password("123456").roles("DBA");
+	  auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
+	  auth.jdbcAuthentication().dataSource(dataSource)
+		.usersByUsernameQuery(
+		   "select username,password, enabled from securityuser where username=?")
+		.authoritiesByUsernameQuery(
+		   "select username, role from securityrole where username=?")
+		.rolePrefix("ROLE_");
 	}
 }
