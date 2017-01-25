@@ -32,7 +32,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 					.usernameParameter("username").passwordParameter("password")
 					.permitAll()
 			.and()
-        		.httpBasic();
+        		.httpBasic()
+        	/*.and()
+        		.authorizeRequests().anyRequest().anonymous()
+        		.antMatchers("/api","/api/**")
+        		.permitAll()*/
+        	;
 	}
 
 	@Autowired

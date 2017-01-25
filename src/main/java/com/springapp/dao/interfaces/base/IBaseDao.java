@@ -7,5 +7,5 @@ public abstract interface IBaseDao<T> {
 	public void delete(T item);
 	public List getAll();
 	public T getById(Integer id);
-	public void update(T item);
+	public T update(T item);
 }

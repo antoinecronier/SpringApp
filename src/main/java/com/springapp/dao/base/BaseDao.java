@@ -40,9 +40,8 @@ public abstract class BaseDao<T> implements IBaseDao<T> {
 				.getResultList();
 	}
 
-	public void update(T item) {
-		entityManager.merge(item);
-		return;
+	public T update(T item) {
+		return entityManager.merge(item);
 	}
 
 	@PersistenceContext

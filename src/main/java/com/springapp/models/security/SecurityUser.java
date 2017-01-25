@@ -1,13 +1,9 @@
 package com.springapp.models.security;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.springapp.models.base.EntityBase;
 
 @Entity
 @Table(name = "securityuser")

@@ -15,11 +15,9 @@ public abstract class BaseManager<T> implements IBaseManager<T> {
 		dao.create(item);
 	}
 
-
 	public void delete(T item) {
 		dao.delete(item);
 	}
-
 
 	public List getAll() {
 		return dao.getAll();
@@ -30,9 +28,8 @@ public abstract class BaseManager<T> implements IBaseManager<T> {
 		return dao.getById(id);
 	}
 
-
-	public void update(T item) {
-		dao.update(item);
+	public T update(T item) {
+		return dao.update(item);
 	}
 
 	@Autowired
