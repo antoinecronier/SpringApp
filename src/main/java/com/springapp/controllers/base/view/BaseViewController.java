@@ -118,7 +118,7 @@ public abstract class BaseViewController<T extends EntityBase> extends
 	public String index(Model model) {
 		model.addAttribute("page", this.baseName + " " + LIST_ACTION);
 		model.addAttribute("attributs", this.classAttributs);
-		model.addAttribute("currentItems", DumpFields.ListFielder(super.getItems()));
+		model.addAttribute("currentItems", DumpFields.listFielder(super.getItems()));
 		return listView;
 	}
 }

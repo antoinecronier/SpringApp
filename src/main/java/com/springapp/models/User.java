@@ -34,11 +34,11 @@ public abstract class User extends EntityBase {
 	@Column(nullable = false)
 	private String password;
 
-//	@ManyToOne
-//	private SecurityUser securityUser;
-//
-//	@OneToMany
-//	private List<SecurityRole> securityRoles;
+	@ManyToOne
+	private SecurityUser securityUser;
+
+	@OneToMany
+	private List<SecurityRole> securityRoles;
 
 	public String getFirstname() {
 		return firstname;

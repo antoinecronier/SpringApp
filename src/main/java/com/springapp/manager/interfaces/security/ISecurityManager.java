@@ -1,5 +1,28 @@
 package com.springapp.manager.interfaces.security;
 
-public interface ISecurityManager {
+import java.util.List;
 
+import com.springapp.models.security.SecurityRole;
+import com.springapp.models.security.SecurityUser;
+
+public interface ISecurityManager {
+	public void create(SecurityRole securityRole) throws Exception;
+	public void delete(SecurityRole securityRole);
+	public SecurityRole update(SecurityRole securityRole);
+	public SecurityRole getSecurityRole(Integer id);
+
+	public List<SecurityRole> getAllSecurityRole();
+	public List<String> getAllUniqueRole();
+	public List<SecurityRole> getAllSecurityRoleByUser(String username);
+
+	public void create(SecurityUser securityUser) throws Exception;
+	public void delete(SecurityUser securityUser);
+	public SecurityUser update(SecurityUser securityUser);
+	public SecurityUser getSecurityUser(String username);
+
+	public List<SecurityUser> getAllSecurityUser();
+
+	public void create(SecurityUser securityUser,List<SecurityRole> securityRoles) throws Exception;
+	public void delete(SecurityUser securityUser,List<SecurityRole> securityRoles);
+	public void update(SecurityUser securityUser,List<SecurityRole> securityRoles);
 }

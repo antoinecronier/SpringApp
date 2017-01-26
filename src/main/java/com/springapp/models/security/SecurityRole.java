@@ -24,37 +24,37 @@ public class SecurityRole {
 	/**
 	 * @return the user_role_id
 	 */
-	protected Integer getUser_role_id() {
+	public Integer getUser_role_id() {
 		return user_role_id;
 	}
 	/**
 	 * @param user_role_id the user_role_id to set
 	 */
-	protected void setUser_role_id(Integer user_role_id) {
+	public void setUser_role_id(Integer user_role_id) {
 		this.user_role_id = user_role_id;
 	}
 	/**
 	 * @return the username
 	 */
-	protected String getUsername() {
+	public String getUsername() {
 		return username;
 	}
 	/**
 	 * @param username the username to set
 	 */
-	protected void setUsername(String username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 	/**
 	 * @return the role
 	 */
-	protected String getRole() {
+	public String getRole() {
 		return role;
 	}
 	/**
 	 * @param role the role to set
 	 */
-	protected void setRole(String role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 }

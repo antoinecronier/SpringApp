@@ -56,7 +56,7 @@ public class DumpFields {
 		return null;
 	}
 
-	public static Map<String, Object> beanProperties(Object bean) {
+	public static Map<String, Object> fielder(Object bean) {
 		try {
 			return Arrays
 					.asList(Introspector.getBeanInfo(bean.getClass(),
@@ -81,10 +81,10 @@ public class DumpFields {
 		}
 	}
 
-	public static <T> ArrayList<Map<String,Object>> ListFielder(List<T> items) {
+	public static <T> ArrayList<Map<String,Object>> listFielder(List<T> items) {
 		ArrayList<Map<String,Object>> listMap = new ArrayList<Map<String,Object>>();
 		for (T item : items) {
-			listMap.add(DumpFields.beanProperties(item));
+			listMap.add(DumpFields.fielder(item));
 		}
 		return listMap;
 	}
