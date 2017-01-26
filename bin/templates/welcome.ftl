@@ -17,18 +17,13 @@
     Message: ${message}
 
     <div class="container">
-        <div class="col-lg-4">
-            <div class="photo"><img src="https://media.licdn.com/media/AAEAAQAAAAAAAANbAAAAJDE5NjBkNDk1LTY3ZGQtNDA0NS04YTJiLTdkNmU3NjZiNjI3Mg.png"></div>
-        </div>
-        <div class="col-lg-4">
-            <div class="photo"><img src="https://media.licdn.com/media/AAEAAQAAAAAAAANbAAAAJDE5NjBkNDk1LTY3ZGQtNDA0NS04YTJiLTdkNmU3NjZiNjI3Mg.png"></div>
-        </div>
-        <div class="col-lg-4">
-            <div class="photo"><img src="https://media.licdn.com/media/AAEAAQAAAAAAAANbAAAAJDE5NjBkNDk1LTY3ZGQtNDA0NS04YTJiLTdkNmU3NjZiNjI3Mg.png"></div>
-        </div>
-        <div class="col-lg-4">
-            <div class="photo"><img src="https://media.licdn.com/media/AAEAAQAAAAAAAANbAAAAJDE5NjBkNDk1LTY3ZGQtNDA0NS04YTJiLTdkNmU3NjZiNjI3Mg.png"></div>
-        </div>
+        <ul>
+            <#list controllers as controller>
+                <li>
+                    <a href="/${controller}/">${controller}</a>
+                </li>
+            </#list>
+        </ul>
     </div>
 </body>
 

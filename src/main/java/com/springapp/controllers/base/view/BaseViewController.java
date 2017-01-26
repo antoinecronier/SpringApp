@@ -1,6 +1,8 @@
-package com.springapp.controllers.view.base;
+package com.springapp.controllers.base.view;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,7 @@ public abstract class BaseViewController<T extends EntityBase> extends
 	private String baseName;
 
 	protected ArrayList<String> classAttributs;
+	protected ArrayList<String> classGetters;
 
 	protected String createView;
 	protected String createRedirect;
@@ -35,19 +38,22 @@ public abstract class BaseViewController<T extends EntityBase> extends
 
 	protected String listView;
 	protected String listRedirect;
+	protected String baseView;
 
 	protected BaseViewController(Class<T> clazz) {
 		super(clazz);
 
 		this.baseName = this.getClazz().getSimpleName().toLowerCase();
+		this.baseView = "baseview";
 
-		this.classAttributs = DumpFields.<T> inspect(this.getClazz());
+		this.classAttributs = DumpFields.<T> inspectBaseAttribut(this.getClazz());
+		this.classGetters = DumpFields.inspectGetter(this.getClazz());
 
-		this.createView = this.baseName + PATH_CREATE_FILE;
-		this.deleteView = this.baseName + PATH_DELETE_FILE;
-		this.updateView = this.baseName + PATH_UPDATE_FILE;
-		this.showView = this.baseName + PATH_SHOW_FILE;
-		this.listView = this.baseName + PATH_LIST_FILE;
+		this.createView = this.baseView + PATH_CREATE_FILE;
+		this.deleteView = this.baseView + PATH_DELETE_FILE;
+		this.updateView = this.baseView + PATH_UPDATE_FILE;
+		this.showView = this.baseView + PATH_SHOW_FILE;
+		this.listView = this.baseView + PATH_LIST_FILE;
 
 		this.createRedirect = REDIRECT + this.baseName + PATH_LIST_FILE;
 		this.deleteRedirect = REDIRECT + this.baseName + PATH_LIST_FILE;
@@ -108,11 +114,11 @@ public abstract class BaseViewController<T extends EntityBase> extends
 		return showView;
 	}
 
-	@RequestMapping(path = ROUTE_LIST, method = RequestMethod.GET)
+	@RequestMapping(value={"/", ROUTE_LIST}, method = RequestMethod.GET)
 	public String index(Model model) {
 		model.addAttribute("page", this.baseName + " " + LIST_ACTION);
 		model.addAttribute("attributs", this.classAttributs);
-		model.addAttribute("currentItems", super.getItems());
+		model.addAttribute("currentItems", DumpFields.ListFielder(super.getItems()));
 		return listView;
 	}
 }

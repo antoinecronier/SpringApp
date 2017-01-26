@@ -1,6 +1,7 @@
 package com.springapp.models;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,11 +9,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.springapp.models.base.EntityBase;
+import com.springapp.models.security.SecurityRole;
+import com.springapp.models.security.SecurityUser;
 
 @MappedSuperclass
 @Inheritance
@@ -28,6 +33,12 @@ public abstract class User extends EntityBase {
 
 	@Column(nullable = false)
 	private String password;
+
+//	@ManyToOne
+//	private SecurityUser securityUser;
+//
+//	@OneToMany
+//	private List<SecurityRole> securityRoles;
 
 	public String getFirstname() {
 		return firstname;

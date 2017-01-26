@@ -56,7 +56,7 @@ public abstract class BaseController<T extends EntityBase> {
 
 	public String deleteItem(Integer id) {
 		try {
-			T item = DumpFields.createContents(id, clazz);
+			T item = DumpFields.createContentsWithId(id, clazz);
 			baseManager.delete(item);
 		} catch (Exception ex) {
 			return "Error deleting the user: " + ex.toString();
@@ -84,13 +84,13 @@ public abstract class BaseController<T extends EntityBase> {
 	}
 
 	public List<T> getItems() {
-		List<T> item = null;
+		List<T> items = null;
 		try {
-			item = baseManager.getAll();
+			items = baseManager.getAll();
 		} catch (Exception ex) {
 			System.err.println("Error getting the user: " + ex.toString());
 		}
-		return item;
+		return items;
 	}
 
 	@Autowired

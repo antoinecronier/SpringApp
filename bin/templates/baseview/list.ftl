@@ -16,15 +16,13 @@ recommend sticking to spring -->
 
         <#list currentItems as item>
             <tr>
-                <td>${item.getFirstname()}</td>
-                <td>${item.getLastname()}</td>
-                <td>${item.getLogin()}</td>
-                <td>${item.getPassword()}</td>
-                <td>${item.getSocity()}</td>
-                <td><a href="${item.getId()}/show">Select</a></td>
+                <#list item?keys as key>
+                    <td>${item[key]}</td>
+                </#list>
+                <td><a href="${item["id"]}/show">Select</a></td>
                 <td>
-                    <form action="${item.getId()}/delete" method="POST">
-                        <input type="hidden" name="id" value="${item.getId()}">
+                    <form action="${item["id"]}/delete" method="POST">
+                        <input type="hidden" name="id" value="${item["id"]}">
                         <input type="submit" value="delete"/>
                     </form>
                 </td>

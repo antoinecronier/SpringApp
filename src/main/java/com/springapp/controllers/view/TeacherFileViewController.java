@@ -1,25 +1,18 @@
 package com.springapp.controllers.view;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.springapp.controllers.view.base.BaseViewController;
-import com.springapp.manager.interfaces.ITeacherFileManager;
-import com.springapp.models.Namespace;
-import com.springapp.models.Teacher;
+import com.springapp.controllers.base.view.BaseViewController;
 import com.springapp.models.TeacherFile;
-import com.springapp.utils.DumpFields;
 
 @Controller
-@RequestMapping("/teacherfile")
+@RequestMapping(TeacherFileViewController.BASE_URL)
 public class TeacherFileViewController extends BaseViewController<TeacherFile> {
+
+	public final static String BASE_URL = "/teacherfile";
 
 	protected TeacherFileViewController() {
 		super(TeacherFile.class);
 	}
-
 }

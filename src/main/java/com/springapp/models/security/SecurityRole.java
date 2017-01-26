@@ -5,12 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.Table;
-
-import com.springapp.models.base.EntityBase;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "securityrole")
 @Inheritance
+@Table(
+	    name="securityrole",
+	    uniqueConstraints= @UniqueConstraint(columnNames={"username", "role"})
+	)
 public class SecurityRole {
 	@Id
 	private Integer user_role_id;

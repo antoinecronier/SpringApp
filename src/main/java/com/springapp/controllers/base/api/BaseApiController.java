@@ -1,4 +1,4 @@
-package com.springapp.controllers.api.base;
+package com.springapp.controllers.base.api;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +23,7 @@ public abstract class BaseApiController<T extends EntityBase> extends BaseContro
 	@RequestMapping(path = ROUTE_CREATE, method = RequestMethod.POST)
 	public String createItemPost(T item) {
 		try {
-			return JsonManager.getInstance().addItem(super.createItem(item)).toJSON();
+			return JsonManager.getInstance().toJSON(super.createItem(item));
 		} catch (Exception e) {
 			return "Error : "+e.getStackTrace();
 		}
@@ -43,7 +43,7 @@ public abstract class BaseApiController<T extends EntityBase> extends BaseContro
 	@RequestMapping(path = ROUTE_UPDATE, method = RequestMethod.POST)
 	public String updateItemPost(@ModelAttribute T item) {
 		try {
-			return JsonManager.getInstance().addItem(super.updateItem(item)).toJSON();
+			return JsonManager.getInstance().toJSON(super.updateItem(item));
 		} catch (Exception e) {
 			return "Error : "+e.getStackTrace();
 		}
@@ -52,7 +52,7 @@ public abstract class BaseApiController<T extends EntityBase> extends BaseContro
 	@RequestMapping(path = ROUTE_SHOW, method = RequestMethod.GET)
 	public String itemGet(@PathVariable Integer id) {
 		try {
-			return JsonManager.getInstance().addItem(super.getItem(id)).toJSON();
+			return JsonManager.getInstance().toJSON(super.getItem(id));
 		} catch (Exception e) {
 			return "Error : "+e.getStackTrace();
 		}
@@ -61,7 +61,7 @@ public abstract class BaseApiController<T extends EntityBase> extends BaseContro
 	@RequestMapping(path = ROUTE_LIST, method = RequestMethod.GET)
 	public String index() {
 		try {
-			return JsonManager.getInstance().addItem(super.getItems()).toJSON();
+			return JsonManager.getInstance().toJSON(super.getItems());
 		} catch (Exception e) {
 			return "Error : "+e.getStackTrace();
 		}

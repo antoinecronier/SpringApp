@@ -58,6 +58,19 @@ public class JsonManager {
 		return null;
 	}
 
+	public String toJSON(Object object) {
+		try {
+			return mapper.writeValueAsString(objects);
+		} catch (JsonGenerationException e) {
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	public void sendToFile() {
 		this.sendToFile(this.FILE_NAME, this.LOCAL_REPO);
 	}

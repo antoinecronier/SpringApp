@@ -12,14 +12,14 @@ import javax.persistence.Table;
 @Inheritance
 public class Teacher extends User {
 	@Column(nullable = true)
-	private String socity;
+	private String society;
 
-	public String getSocity() {
-		return socity;
+	public String getSociety() {
+		return society;
 	}
 
-	public void setSocity(String socity) {
-		this.socity = socity;
+	public void setSociety(String socity) {
+		this.society = socity;
 	}
 
 	public Teacher() {
@@ -33,6 +33,6 @@ public class Teacher extends User {
 	public Teacher(String firstname, String lastname, String login,
 			String password, String socity) {
 		super(firstname, lastname, login, password);
-		this.socity = socity;
+		this.society = socity;
 	}
 }
