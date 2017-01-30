@@ -71,7 +71,11 @@ public abstract class BaseViewController<T extends EntityBase> extends
 
 	@RequestMapping(path = ROUTE_CREATE, method = RequestMethod.POST)
 	public String createItemPost(T item, Model model) {
-		super.createItem(item);
+		try {
+			super.createItem(item);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		model.addAttribute("attributs", this.classAttributs);
 		model.addAttribute("currentItems", super.getItems());
 		return createRedirect;

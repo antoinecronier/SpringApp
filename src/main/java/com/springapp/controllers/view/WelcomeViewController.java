@@ -8,6 +8,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.session.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -21,12 +23,16 @@ public class WelcomeViewController {
 	@Value("${application.message:Hello World}")
 	private String message = "Hello World";
 
-	@GetMapping(value={"/", "/welcome"})
-	public String welcome(Map<String, Object> model, final HttpServletRequest request, Principal principal) {
+	@GetMapping(value = { "/", "/welcome" })
+	public String welcome(Map<String, Object> model,
+			final HttpServletRequest request, Principal principal,
+			Session session, SecurityContext securityContext) {
 		model.put("time", new Date());
 		model.put("message", this.message);
 		try {
-			model.put("controllers",DumpFields.getClassesNames(VIEW_CONTROLLER));
+			model.put("controllers",
+					DumpFields.getClassesNames(VIEW_CONTROLLER));
+
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

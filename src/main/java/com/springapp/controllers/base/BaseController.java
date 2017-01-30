@@ -45,13 +45,9 @@ public abstract class BaseController<T extends EntityBase> {
 		this.clazz = clazz;
 	}
 
-	public String createItem(@ModelAttribute T item) {
-		try {
-			baseManager.create(item);
-		} catch (Exception ex) {
-			return "Error creating the user: " + ex.toString();
-		}
-		return "Teacher succesfully created!";
+	public T createItem(@ModelAttribute T item) throws Exception {
+		baseManager.create(item);
+		return item;
 	}
 
 	public String deleteItem(Integer id) {

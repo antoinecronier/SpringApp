@@ -71,10 +71,14 @@ public class DumpFields {
 																	// method to
 																	// get value
 								try {
-									return pd.getReadMethod().invoke(bean);
+									Object test = pd.getReadMethod().invoke(bean);
+									if (test == null) {
+										test = "";
+									}
+									return test;
 								} catch (Exception e) {
 									// replace this with better error handling
-									return null;
+									return e;
 								}
 							}));
 		} catch (IntrospectionException e) {

@@ -13,6 +13,8 @@ import com.springapp.utils.JsonManager;
 @RestController
 public abstract class BaseApiController<T extends EntityBase> extends BaseController<T> {
 
+	public final static String BASE_API_URL = "/api";
+
 	private String baseName;
 
 	protected BaseApiController(Class<T> clazz) {
@@ -20,17 +22,17 @@ public abstract class BaseApiController<T extends EntityBase> extends BaseContro
 		this.baseName = this.getClazz().getSimpleName().toLowerCase();
 	}
 
-	@RequestMapping(path = ROUTE_CREATE, method = RequestMethod.POST)
-	public String createItemPost(T item) {
+	@RequestMapping(path = ROUTE_CREATE, method = RequestMethod.POST, produces = "application/json")
+	public Object createItemPost(T item) {
 		try {
-			return JsonManager.getInstance().toJSON(super.createItem(item));
+			return super.createItem(item);
 		} catch (Exception e) {
 			return "Error : "+e.getStackTrace();
 		}
 	}
 
-	@RequestMapping(path = ROUTE_DELETE, method = RequestMethod.POST)
-	public String deleteItemPost(Integer id) {
+	@RequestMapping(path = ROUTE_DELETE, method = RequestMethod.POST, produces = "application/json")
+	public Object deleteItemPost(Integer id) {
 		try {
 			super.deleteItem(id);
 		} catch (Exception e) {
@@ -40,28 +42,28 @@ public abstract class BaseApiController<T extends EntityBase> extends BaseContro
 		return "Item deleted";
 	}
 
-	@RequestMapping(path = ROUTE_UPDATE, method = RequestMethod.POST)
-	public String updateItemPost(@ModelAttribute T item) {
+	@RequestMapping(path = ROUTE_UPDATE, method = RequestMethod.POST, produces = "application/json")
+	public Object updateItemPost(@ModelAttribute T item) {
 		try {
-			return JsonManager.getInstance().toJSON(super.updateItem(item));
+			return super.updateItem(item);
 		} catch (Exception e) {
 			return "Error : "+e.getStackTrace();
 		}
 	}
 
-	@RequestMapping(path = ROUTE_SHOW, method = RequestMethod.GET)
-	public String itemGet(@PathVariable Integer id) {
+	@RequestMapping(path = ROUTE_SHOW, method = RequestMethod.GET, produces = "application/json")
+	public Object itemGet(@PathVariable Integer id) {
 		try {
-			return JsonManager.getInstance().toJSON(super.getItem(id));
+			return super.getItem(id);
 		} catch (Exception e) {
 			return "Error : "+e.getStackTrace();
 		}
 	}
 
-	@RequestMapping(path = ROUTE_LIST, method = RequestMethod.GET)
-	public String index() {
+	@RequestMapping(path = ROUTE_LIST, method = RequestMethod.GET, produces = "application/json")
+	public Object index() {
 		try {
-			return JsonManager.getInstance().toJSON(super.getItems());
+			return super.getItems();
 		} catch (Exception e) {
 			return "Error : "+e.getStackTrace();
 		}

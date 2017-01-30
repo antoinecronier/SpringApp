@@ -7,8 +7,10 @@ import com.springapp.controllers.base.api.BaseApiController;
 import com.springapp.models.Teacher;
 
 @RestController
-@RequestMapping("/api/teacher")
+@RequestMapping(TeacherAPIController.MODEL_API_URL)
 public class TeacherAPIController extends BaseApiController<Teacher> {
+
+	public final static String MODEL_API_URL = BaseApiController.BASE_API_URL + "/teacher";
 
 	protected TeacherAPIController() {
 		super(Teacher.class);
