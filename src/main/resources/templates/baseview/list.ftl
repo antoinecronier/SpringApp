@@ -9,15 +9,22 @@ recommend sticking to spring -->
     <a href="create">Create new</a>
     <table class="table table-bordered table-hover">
         <tr>
-            <#list attributs as attribut>
-                <th>${attribut}</th>
+            <#list currentItems as item>
+                <#list item?keys as key>
+                    <#if key != "id">
+                        <th>${key}</th>
+                    </#if>
+                </#list>
+                <#break>
             </#list>
         </tr>
 
         <#list currentItems as item>
             <tr>
                 <#list item?keys as key>
-                    <td>${item[key]}</td>
+                    <#if key != "id">
+                        <td>${item[key]}</td>
+                    </#if>
                 </#list>
                 <td><a href="${item["id"]}/show">Select</a></td>
                 <td>

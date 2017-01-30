@@ -5,26 +5,14 @@
 <body>
     <h1>${page}</h1>
     <table class="table table-bordered table-hover">
-        <tr>
-            <th>Firstname</th>
-            <td>${currentItem.getFirstname()}</td>
-        </tr>
-        <tr>
-            <th>Lastname</th>
-            <td>${currentItem.getLastname()}</td>
-        </tr>
-        <tr>
-            <th>Login</th>
-            <td>${currentItem.getLogin()}</td>
-        </tr>
-        <tr>
-            <th>Password</th>
-            <td>${currentItem.getPassword()}</td>
-        </tr>
-        <tr>
-            <th>Socity</th>
-            <td>${currentItem.getSocity()}</td>
-        </tr>
+        <#list currentItem?keys as key>
+            <#if key != "id">
+                <tr>
+                    <th>${key}</th>
+                    <td>${currentItem[key]}</td>
+                </tr>
+            </#if>
+        </#list>
         <tr>
             <td><a href="update">Update</a></td>
         </tr>

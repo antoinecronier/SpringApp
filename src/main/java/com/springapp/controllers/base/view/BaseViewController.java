@@ -80,7 +80,7 @@ public abstract class BaseViewController<T extends EntityBase> extends
 	@RequestMapping(path = ROUTE_DELETE, method = RequestMethod.GET)
 	public String deleteItemGet(@PathVariable Integer id, Model model) {
 		model.addAttribute("page", this.baseName + " " + DELETE_ACTION);
-		model.addAttribute("currentItem", super.getItem(id));
+		model.addAttribute("currentItem", DumpFields.fielder(super.getItem(id)));
 		return deleteView;
 	}
 
@@ -95,7 +95,7 @@ public abstract class BaseViewController<T extends EntityBase> extends
 	@RequestMapping(path = ROUTE_UPDATE, method = RequestMethod.GET)
 	public String updateItemGet(@PathVariable Integer id, Model model) {
 		model.addAttribute("page", this.baseName + " " + UPDATE_ACTION);
-		model.addAttribute("currentItem", super.getItem(id));
+		model.addAttribute("currentItem", DumpFields.fielder(super.getItem(id)));
 		return updateView;
 	}
 
@@ -110,7 +110,7 @@ public abstract class BaseViewController<T extends EntityBase> extends
 	@RequestMapping(path = ROUTE_SHOW, method = RequestMethod.GET)
 	public String itemGet(@PathVariable Integer id, Model model) {
 		model.addAttribute("page", this.baseName + " " + SHOW_ACTION);
-		model.addAttribute("currentItem", super.getItem(id));
+		model.addAttribute("currentItem", DumpFields.fielder(super.getItem(id)));
 		return showView;
 	}
 
