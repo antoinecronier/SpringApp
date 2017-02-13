@@ -12,10 +12,16 @@
 <body>
     Date: ${time?date}
     <br>
+    The current locale is: ${.locale}
+    <br>
     Time: ${time?time}
     <br>
     Message: ${message}
-
+    <br>
+    ${redirectTest}
+    <br>
+    Welcome ${Session["SPRING_SECURITY_CONTEXT"].authentication.name}
+    <br>
     <div class="container">
         <ul>
             <#list controllers as controller>

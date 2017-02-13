@@ -6,13 +6,17 @@ import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.session.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.springapp.models.Teacher;
 import com.springapp.utils.DumpFields;
 
 @Controller
@@ -26,7 +30,7 @@ public class WelcomeViewController {
 	@GetMapping(value = { "/", "/welcome" })
 	public String welcome(Map<String, Object> model,
 			final HttpServletRequest request, Principal principal,
-			Session session, SecurityContext securityContext) {
+			SecurityContext securityContext) {
 		model.put("time", new Date());
 		model.put("message", this.message);
 		try {
@@ -40,6 +44,9 @@ public class WelcomeViewController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		//Session
+		model.put("redirectTest", "<a href='https://lmgtfy.com/?q=" + "potatoes" +"'> Click me </a>");
 
 		return "welcome";
 	}

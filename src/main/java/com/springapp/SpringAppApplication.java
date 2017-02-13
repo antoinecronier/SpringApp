@@ -3,21 +3,17 @@ package com.springapp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHttpSession;
-
 import com.springapp.dao.GradeDao;
 import com.springapp.dao.NamespaceDao;
 import com.springapp.dao.ProjectDao;
 import com.springapp.dao.StudentDao;
 import com.springapp.dao.StudentFileDao;
-import com.springapp.dao.TeacherDao;
 import com.springapp.dao.TeacherFileDao;
 import com.springapp.dao.interfaces.IGradeDao;
 import com.springapp.dao.interfaces.INamespaceDao;
 import com.springapp.dao.interfaces.IProjectDao;
 import com.springapp.dao.interfaces.IStudentDao;
 import com.springapp.dao.interfaces.IStudentFileDao;
-import com.springapp.dao.interfaces.ITeacherDao;
 import com.springapp.dao.interfaces.ITeacherFileDao;
 import com.springapp.manager.GradeManager;
 import com.springapp.manager.NamespaceManager;
@@ -25,14 +21,12 @@ import com.springapp.manager.ProjectManager;
 import com.springapp.manager.StudentFileManager;
 import com.springapp.manager.StudentManager;
 import com.springapp.manager.TeacherFileManager;
-import com.springapp.manager.TeacherManager;
 import com.springapp.manager.interfaces.IGradeManager;
 import com.springapp.manager.interfaces.INamespaceManager;
 import com.springapp.manager.interfaces.IProjectManager;
 import com.springapp.manager.interfaces.IStudentFileManager;
 import com.springapp.manager.interfaces.IStudentManager;
 import com.springapp.manager.interfaces.ITeacherFileManager;
-import com.springapp.manager.interfaces.ITeacherManager;
 
 @SpringBootApplication
 //@EnableJdbcHttpSession
