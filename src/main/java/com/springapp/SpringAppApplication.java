@@ -2,7 +2,10 @@ package com.springapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+
 import com.springapp.dao.GradeDao;
 import com.springapp.dao.NamespaceDao;
 import com.springapp.dao.ProjectDao;
@@ -30,7 +33,7 @@ import com.springapp.manager.interfaces.ITeacherFileManager;
 
 @SpringBootApplication
 //@EnableJdbcHttpSession
-public class SpringAppApplication {
+public class SpringAppApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringAppApplication.class, args);
@@ -95,4 +98,9 @@ public class SpringAppApplication {
 	public IGradeManager getGradeManager(){
 		return new GradeManager();
 	}
+
+	@Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(SpringAppApplication.class);
+    }
 }
