@@ -1,10 +1,14 @@
 package com.springapp.controllers.view;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.util.WebUtils;
 
 import com.springapp.controllers.base.view.BaseViewController;
 import com.springapp.models.Grade;
@@ -23,7 +27,7 @@ public class GradeViewController extends BaseViewController<Grade> {
 	 * @see com.springapp.controllers.base.view.BaseViewController#index(org.springframework.ui.Model)
 	 */
 	@Override
-	public String index(Model model) {
+	public String index(Model model,HttpServletRequest request) {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 		String username;
@@ -36,6 +40,10 @@ public class GradeViewController extends BaseViewController<Grade> {
 
 		System.out.println(username);
 
-		return super.index(model);
+
+		Cookie cookie = WebUtils.getCookie(request, "hitCookie");
+		System.out.println(cookie.getValue());
+
+		return super.index(model, request);
 	}
 }

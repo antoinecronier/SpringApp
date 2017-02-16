@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.util.WebUtils;
 
 import com.springapp.controllers.base.BaseController;
 import com.springapp.models.base.EntityBase;
@@ -119,7 +124,7 @@ public abstract class BaseViewController<T extends EntityBase> extends
 	}
 
 	@RequestMapping(value={"/", ROUTE_LIST}, method = RequestMethod.GET)
-	public String index(Model model) {
+	public String index(Model model, HttpServletRequest request) {
 		model.addAttribute("page", this.baseName + " " + LIST_ACTION);
 		model.addAttribute("attributs", this.classAttributs);
 		model.addAttribute("currentItems", DumpFields.listFielder(super.getItems()));
